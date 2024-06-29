@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+    <script src="https://kit.fontawesome.com/c2cd97bceb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/tema.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <title>SodaFan</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav-header">
+            <div class="logo">
+                <div class="loader">
+                    <div class="circulo blanco"></div>
+                    <div class="circulo rojo"></div>
+                    <div class="circulo naranja"></div>
+                    <div class="circulo amarillo"></div>
+                </div>
+                <div class="dos">
+                    <span>TEAM 17</span>
+                </div>
+            </div>
+            <div class="buscar">
+                <div class="busc">
+                    <input class="inp" type="search" value="Soda Stereo" id="searchTerm" placeholder=" 🔍 Buscar">
+                    <a href="#busca" id="searchButton">Buscar</a>
+                </div>
+            </div>
+        </nav>
+        <nav class="nav-item">
+            <ul>
+                <li><a href="./index.html"><i class="fa-solid fa-house fa-2xl"></i> Inicio</a></li>
+                <li><a href="javascript:abriuser()"><i class="fa-solid fa-table-cells-large fa-2xl"></i> CRUD-USERS </a>
+                </li>
+                <li><a href="javascript:abri()"><i class="fa-solid fa-radio fa-2xl"></i> Radio</a></li>
+            </ul>
+            <!-- crud usuarios -->
+            <div class="mod" id="mod">
+                <div class="user-list">
+                    <div id="cerr"><a href="javascript:cerraruser()"><img src="./img/error.png" alt=""></a></div>
+                    <table id="tablaUsers">
+                        <thead>
+                            <tr class="text-center">
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Password</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <button id="cargar" type="button" onclick="cargar()">Cargar</button>
+                </div>
+            </div>
+
+            <!-- radio -->
+            <div class="radio" id="radio">
+                <h5>FM ASPEN</h5>
+                <div id="cerr"><a href="javascript:cerr()"><img src="./img/error.png" alt=""></a></div>
+
+                <iframe class="fm" src="https://24223.live.streamtheworld.com/ASPEN.mp3" title="YouTube video player"
+                    style="border: none;"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="player-bar">
+            <div class="player">
+                <audio></audio>
+                <h2>Song</h2>
+
+                <div class="container_buttons-time">
+                    <div id="current_time">0:00</div>
+
+                    <div class="buttons">
+                        <button id="prev">
+                            <i class="fas fa-backward fa-xl"></i>
+                        </button>
+                        <button id="play">
+                            <i class="fas fa-play fa-xl"></i>
+                        </button>
+                        <button id="next">
+                            <i class="fas fa-forward fa-xl"></i>
+                        </button>
+                    </div>
+
+                    <div id="current_audio"></div>
+                </div>
+
+                <div class="progress_container">
+                    <div id="progress"></div>
+                </div>
+
+            </div>
+            <div class="login">
+                <a href="#" id="btnini">Inicio Sesión</a>
+                <div class="holder" id="holder">Login</div>
+            </div>
+        </section>
+        <!-- Ventana De Login o Registro -->
+        <div class="ventana" id="vent">
+            <div id="cerrar"><a href="javascript:cerrar()"><img src="./img/error.png" alt=""></a></div>
+            <h1 id="title">Registro</h1>
+            <form class="formulario" id="formulario">
+                <div class="input-group">
+                    <div class="input-field" id="nameInput">
+                        <i class="valid fa-solid fa-user fa-xl"></i>
+                        <input type="text" class="formInput" id="nombre2" name="nombre2" placeholder="Nombre">
+                    </div>
+                    <div class="input-field" id="emailInput">
+                        <i class="valid fa-solid fa-envelope fa-xl"></i>
+                        <input type="email" class="formInput" id="email" name="email" placeholder="Correo">
+                    </div>
+                    <div class="input-field" id="passwordInput">
+                        <i class="valid fa-solid fa-lock fa-xl"></i>
+                        <input type="password" class="formInput" id="password" name="password" placeholder="Contraseña">
+                    </div>
+                    <p>Olvidaste tu contraseña <a href="#">Click Aqui</a></p>
+                </div>
+                <div class="btn-field">
+                    <button id="signUp" type="submit">Registro</button>
+                    <button id="signIn" type="submit" class="disable">Login</button>
+                </div>
+                <label class="input-label">
+                    <input class="form-checkbox" type="checkbox" name="terminos" id="terminos">
+                    <h6 id="term">Acepto los Terminos y Condiciones</h6>
+                </label>
+                <p class="warnings" id="warnings"></p>
+            </form>
+        </div>
+        <!-- SECCION BANNER -->
+        <section class="section-content" id="content">
+            <div class="banner">
+                <img src="./img/500x500-000000-80-0-0.jpg" alt="">
+            </div>
+            <div class="titulo">
+                <h2>Nada Personal</h2>
+                <h3>Soda Stereo</h3>
+                <a href="#" onclick="playSong()">Reproducir</a>
+            </div>
+        </section>
+        <section class="section-list" id="music-player">
+            <h2>Lista de traks</h2>
+            <ol>
+                <li><a href="#" onclick="playList(0)">Nada Personal</a></li>
+                <li><a href="#" onclick="playList(1)">Si No Fuera Por...</a></li>
+                <li><a href="#" onclick="playList(2)">Cuando Pase el Temblor</a></li>
+                <li><a href="#" onclick="playList(3)">Danza Rota</a></li>
+                <li><a href="#" onclick="playList(4)">El Cuerpo del Delito</a></li>
+                <li><a href="#" onclick="playList(5)">Juegos de Seducción</a></li>
+                <li><a href="#" onclick="playList(6)">Estoy Azulado</a></li>
+                <li><a href="#" onclick="playList(7)">Observandonos (Satélites)</a></li>
+                <li><a href="#" onclick="playList(8)">Imágenes Retro</a></li>
+                <li><a href="#" onclick="playList(9)">Ecos</a></li>
+            </ol>
+        </section>
+
+        <div class="section-busc" id="busca">
+            <h3>Tu Busqueda</h3>
+        </div>
+
+        <section class="section-video">
+            <h2>Video - Soda Stereo - Nada Personal</h2>
+            <div class="video">
+                <iframe width="600" height="400" src="https://www.youtube.com/embed/0k0Pm_wFN3I"
+                    title="Soda estéreo - Nada personal (Vivo)"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </section>
+        <section>
+            <div id="container-blog">
+
+            </div>
+        </section>
+
+        <!-- ######################################################### -->
+        <div class="crud">
+            <section id="form" class="container ">
+                <h2 class="search-title">Gestión de Creditos de Temas Musicale</h2>
+                <p class="description">En esta sección se podra llevar a cabo la gestión de los botos de temas muicales
+                    del portal.
+                </p>
+                <form action="#" id="form-tema">
+                    <div class="d-flex">
+                        <div class="form-control d-flex-column">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="input-search" name="nombre" id="nombre">
+                        </div>
+                        <div class="form-control d-flex-column">
+                            <label for="albun">Albun</label>
+                            <input type="text" class="input-search" name="albun" id="albun">
+                        </div>
+                        <div class="form-control d-flex-column">
+                            <label for="creditos">Creditos</label>
+                            <input type="text" class="input-search" name="creditos" id="creditos">
+                        </div>
+                        <input type="hidden" name="idtemas" id="idtemas">
+                        <button class="btn-crud" type="button" id="btn-save-tema">Agregar</button>
+                    </div>
+                </form>
+            </section>
+            <section id="list" class="container">
+                <h3 class="subtitle">Listado de Temas Musicales Fanaticos</h3>
+                <table id="list-table-temas" class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Albun</th>
+                            <th>Creditos</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-table-temas">
+
+                    </tbody>
+                </table>
+            </section>
+        </div>
+        <!-- ######################################################### -->
+    </main>
+    <footer class="footer">
+        <div class="redes">
+            <ul class="menuRed">
+                <li><a href="https://www.youtube.com"><i class="fa-brands fa-square-youtube fa-2xl"></i></a>
+                </li>
+                <li><a href="https://www.facebook.com/?locale=es_LA#"><i
+                            class="fa-brands fa-square-facebook fa-2xl"></i></a></li>
+                <li><a href="https://www.instagram.com"><i class="fa-brands fa-square-instagram fa-2xl"></i></a>
+                </li>
+                <li><a href="https://www.linkedin.com"><i class="fa-brands fa-linkedin fa-2xl"></i></a></li>
+            </ul>
+        </div>
+        <div class="copy">
+            <p><samp>@ Team 17</samp></p>
+        </div>
+    </footer>
+    <script src="./js/script.js"></script>
+    <script src="./js/tema.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+</body>
+
+</html>

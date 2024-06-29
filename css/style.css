@@ -1,0 +1,988 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+:root{
+    --bg-color:#000000;
+    --primary-color:#ffffff;
+    --secondary-color: #ff0000;
+    --third-color: #aaa;
+    --third-bis-color: #db4648f2;
+    --bg-input-color: #4f31572c;   
+    --LightShadow: rgba(255, 255, 255, 0.5);
+    --DarkShadow: rgba(163, 177, 198, 0.6);
+    --MainBackground: #E0E5EC;
+}
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing:border-box;
+    font-family: 'Satisfy';
+}
+
+body {
+    background-color: var(--bg-color);
+    display: flex;
+    flex-flow:wrap ;
+    text-align: center;
+}
+
+/*----- Header Nav -------*/
+.loader {
+    height: 5em;
+    width: 5em;
+    margin-left: 5px;
+    margin-top: 5px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circulo {
+    position: absolute;
+    height: 80%;
+    width: 80%;
+    border-radius: 50%;
+    border-style: solid;
+}
+
+.blanco {
+    border-width: 3px 3px 0 0;
+    border-color: white white transparent transparent;
+    animation: 1s rotate-blanco linear infinite;
+}
+
+.rojo {
+    border-width: 0 0 3px 3px;
+    border-color: transparent transparent red red;
+    animation: 1s rotate-rojo linear infinite;
+}
+
+.naranja {
+    border-width: 0 3px 3px 0;
+    border-color: transparent orange orange transparent;
+    animation: 1s rotate-naranja linear infinite;
+}
+
+.amarillo {
+    border-width: 3px 0 0 3px;
+    border-color: yellow transparent transparent yellow;
+    animation: 1s rotate-amarillo linear infinite;
+}
+
+@keyframes rotate-blanco {
+    from {
+        transform: rotateX(45deg) rotateY(-35deg) rotateZ(0deg);
+    }
+
+    to {
+        transform: rotateX(45deg) rotateY(-35deg) rotateZ(360deg);
+    }
+}
+
+@keyframes rotate-rojo {
+    from {
+        transform: rotateX(45deg) rotateY(35deg) rotateZ(0deg);
+    }
+
+    to {
+        transform: rotateX(45deg) rotateY(35deg) rotateZ(360deg);
+    }
+}
+
+@keyframes rotate-naranja {
+    from {
+        transform: rotateX(70deg) rotateZ(0deg);
+    }
+
+    to {
+        transform: rotateX(70deg) rotateZ(360deg);
+    }
+}
+
+@keyframes rotate-amarillo {
+    from {
+        transform: rotateY(70deg) rotateZ(0deg);
+    }
+
+    to {
+        transform: rotateY(70deg) rotateZ(360deg);
+    }
+}
+
+/* ----------- NAV LATERAL ------------ */
+.header {
+    width: 20vw;
+    height: 100vh;
+    position: fixed;
+    /* background-color: aqua; */
+}
+.header .nav-header{
+    height: 20%;
+}
+.header .nav-header .logo{
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+}
+.header .nav-header .logo .dos{
+    height: 100%;
+    width: 50%;
+    text-align: start;
+    color: #ffffff;
+    text-shadow: 5px 5px 5px var(--third-color);;
+    align-content:space-evenly;
+    font-size: clamp(1rem, 3vw, 2rem);
+    text-align: center;
+    padding-top: 5px;
+    cursor: pointer;
+}
+.header .nav-header .logo .dos:hover{
+    color: var(--secondary-color);
+}
+
+.buscar{
+    width: 100%;
+    height: 50%;
+}
+.buscar .busc{
+    width: 100%;
+    height: 100%;
+    align-content: space-around;
+}
+.buscar .busc .inp{
+    width: 70%;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    color: var(--primary-color);
+    font-family: sans-serif;
+    font-size: clamp(0.5rem, 6vh, 1rem);
+    background-color: transparent var(--third-color);
+}
+
+.buscar .busc #searchButton{
+    width: 20%;
+    height: 30px;
+    border-radius: 25px;
+    display: flex;
+    margin-left: 4rem;
+    background-color: var(--third-bis-color);
+    color: var(--MainBackground);
+    margin-top: 10px;
+    padding: 0;
+    box-shadow: 0px 0px 20px var(--MainBackground);
+    cursor: pointer;
+}
+#searchButton{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.header .nav-item{
+    height: 80%;
+}
+.header .nav-item ul{
+    height: 50%;
+    padding: 1.5rem;
+}
+.header .nav-item ul li{
+    text-shadow: 5px 5px 10px var(--third-color);
+    border-radius: 30px;
+    padding: 25px;
+    text-align: start;
+    font-size: clamp(0.5rem, 6vh, 1rem);
+}
+.header .nav-item ul li a{
+    color: white;
+    cursor: pointer;
+}
+.header .nav-item ul li a:hover{
+    color: var(--secondary-color);
+}
+.radio{
+    background-color: var(--bg-color);
+    width: 45vh;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(1rem, 4vh,2rem);
+    text-align: center;
+    border: 3px solid var(--third-bis-color);
+    border-radius: 25px;
+    position: absolute;
+    left: 4%;
+    top: 50%;
+    display: none;
+    padding: 15px;
+    h5{
+        padding-top: 20px;
+    }
+}
+.fm{
+    width: 95%;
+}
+#cerr{
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    cursor: pointer;
+    img{
+        width: 20px;
+    }
+}
+
+.mod{
+    background-color: var(--bg-color);
+    width: 40vw;
+    height: 60vh;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(1rem, 4vh,2rem);
+    text-align: center;
+    border: 3px solid var(--third-bis-color);
+    border-radius: 25px;
+    position: absolute;
+    left: 4%;
+    top: 15%;
+    display: none;
+    padding: 15px;
+    h5{
+        padding-top: 20px;
+    }
+}
+
+
+/*----------- Main Player ---------*/
+.main {
+    width: 100vw;
+    height: 100%;
+}
+.player-bar{
+    display: flex;
+}
+.player{
+    background-color: var(--bg-color);
+    width: 75vw;
+    height: 130px;
+    margin-left: 22vw;
+    color: var(--primary-color);
+    font-size: clamp(1rem, 3vh, 1.5rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-evenly;
+    position: relative;
+}
+.player h2{
+    position: absolute;
+    font-size: clamp(0.9rem, 2vh, 2rem);
+    top: 4px;
+    margin: 0;
+    color: var(--primary-color);
+}
+.container_buttons-time{
+    width: 30%;
+    display: flex;
+    padding-top: 15px;
+    justify-content: space-around;
+    align-items: center;
+    .buttons{
+        display: inline-flex;
+        gap: 25px;
+    }
+}
+.buttons button{
+    border: 2ps solid var(--third-bis-color);
+    border-radius: 100%;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.progress_container{
+    background-color: #ccc;
+    position:absolute;
+    align-items: end;
+    bottom: -15%;
+    width: 60%;
+    height: 15px;
+    border-radius: 6px;
+    overflow-y: hidden;
+    /* overflow: hidden; */
+    cursor: pointer;
+}
+.progress_container #progress{
+    background-color: var(--third-bis-color);
+    width: 0%;
+    height: 100%;
+}
+
+.login{
+    width: 10rem;
+    height: 3.5rem;
+    border: 2px solid var(--third-bis-color);
+    border-radius: 25px;
+    padding-top: 14px;
+    text-align: center;
+    text-transform:capitalize ;
+    margin-top: 20px;
+    margin-right: 40px;
+    margin-left: 30px;
+    font-size: clamp(0.5rem, 3vh, 1.1rem);
+    box-shadow: 0px 0px 20px var(--MainBackground);
+    animation: palpitar 1.5s infinite;
+}
+
+@keyframes palpitar{
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(220, 29, 39, 0.5);
+    }
+    50% {
+        transform: scale(1.2);
+        box-shadow: 0 0 20px rgba(220, 29, 39, 0.8);
+    }
+}
+.login a{
+    color: var(--primary-color);
+    font-weight: 600;
+}
+.login a:hover{
+    color: var(--secondary-color);
+}
+.holder {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+}
+
+.login:hover .holder {
+    display: block;
+}
+/*---------------- Ventana de Login--------------------*/
+.ventana{
+    background-color: var(--bg-color);
+    width: 30%;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(1rem, 4vh,2rem);
+    text-align: center;
+    padding: 33px;
+    min-height: 60vh;
+    border: 3px solid var(--third-bis-color);
+    border-radius: 25px;
+    position: absolute;
+    left: 34%;
+    top: 20%;
+    display: none;
+    padding: 50px 60px 70px;
+}
+#cerrar{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+}
+.ventana h1{
+    font-size: clamp(1rem, 4vh,2rem);
+    margin-bottom: 60px;
+    color: #ffffff;
+    position: relative;
+}
+
+.ventana h1::after{
+    content: '';
+    width: 30px;
+    height: 4px;
+    border-radius: 3px;
+    background-color: var(--secondary-color);
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.input-field{
+    background-color: var(--third-color);
+    margin: 15px 0;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    transition: max-height 0.5s;
+    overflow: hidden;
+}
+
+input{
+    width: 100%;
+    background-color: transparent;
+    border: 0;
+    outline: one;
+    padding: 18px 15px;
+    color: #ffffff;
+    font-size: clamp(0.5rem, 4vh, 1.2rem);
+}
+input::placeholder{
+    color: #ffffff;
+}
+.input-field i{
+    margin-left: 15px;
+    color: var(--primary-color);
+}
+
+form p{
+    color: #ffffff;
+    padding: 10px;
+    text-align: left;
+    font-size: clamp(0.5rem, 3vh, 1rem);
+}
+
+form p a {
+    color: var(--third-bis-color);
+    margin-left: 5px;
+}
+
+.btn-field {
+    width: 100%;
+    display: flex;
+    margin-top: 2rem;
+    justify-content: space-between;
+}
+
+.btn-field button{
+    flex-basis: 48%;
+    font-size: clamp(1rem, 2vh, 1.5rem);
+    font-weight: 300;
+    background-color: var(--third-bis-color);
+    color: #ffffff;
+    height: 40px;
+    border-radius: 10px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background 1s;
+}
+
+.input-group{
+    height: 250px;
+}
+.btn-field button.disable{
+    background-color: #EAEAEA;
+    opacity: 30%;
+    color: #2c2f35;
+}
+
+.input-label h6{
+    margin-top: 5px;
+    color: white;
+    display: block;
+    font-size: clamp(0.8rem, 2vh, 1.2rem);
+}
+.warnings{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(0.5rem,1.5vh,1.2rem);
+}
+
+/*-----------  Estilos para Validacion ---------*/
+.input-field-correcto .valid{
+    background-color: var(--third-color);
+    opacity: 1;
+}
+
+.input-field-incorrecto .valid{
+    color: var(--secondary-color);
+    opacity: 1;
+}
+
+.input-field-incorrecto .formInput {
+    border: 5px solid var(--secondary-color);
+}
+
+.form__exito-activo{
+    display: block;
+}
+
+/*------------ Section Banner ----------------*/
+
+.section-content{
+    width: 100%;
+    height: 70vh;
+    padding: 350px;
+    display: flex;
+    background-image:linear-gradient(to right top, #0000008a, #0000008a), url(../img/banner.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.banner{
+    width: 50vw;
+    height: 100vh;
+}
+.banner img{
+    width: 20vw;
+    height: 35vh;
+}
+.titulo{
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vh;
+    align-items:center;
+    padding-top: 4vh;
+    justify-content:space-evenly;
+    h2, h3{
+        width: 20vw;
+        padding: 1vh;
+        color: var(--primary-color);
+        font-size: clamp(1rem, 4vh, 2rem);
+    }
+    a{
+        width: 12vw;
+        padding: 1vw;
+        border-radius: 20vh;
+        color: var(--primary-color);
+        font-size: clamp(0.5rem, 4vh, 1.2rem);
+        font-weight: 500;
+        background-color: var(--third-bis-color);
+        box-shadow: 0px 0px 15px var(--MainBackground);
+    }
+    a:hover{
+        background-color: var(--secondary-color);
+    }
+}
+
+
+/*----------------- Section Lista de Reproducción-------------------*/
+.section-list{
+    height: 100vh;
+    color: var(--primary-color);
+    li{
+        width: 60%;
+        padding: 0.5em;
+        padding-left: 3em;
+        margin-left: 15em;
+        margin-top: 0.1rem;
+        border-radius: 1rem;
+        text-align: left;
+        font-size: clamp(0.5rem, 2.5vh, 1.5rem);
+        list-style-type: style; ;
+        cursor: pointer;
+        background-color: var(--MainBackground);
+    }
+    li:hover{
+        background-color: var(--third-color);
+    }
+    a{
+        color: var(--bg-color);
+        text-shadow: -1px 3px 5px var(--bg-color);
+    }
+    .track{
+        align-items: center;
+        justify-content: center;
+        background-color: var(--LightShadow);
+        a{
+            margin-top: -15px;
+            margin-bottom: 100px;
+        }
+        audio{
+            padding: 10px 0px 10px 45px;
+        }
+    }
+}
+
+/*-------------------- Section Busqueda -----------------------*/
+.section-busc{
+    height: 25px;
+    margin-bottom: 15px;
+    h3{
+        color: var(--primary-color);
+        font-size: clamp(1rem,4vh,1.5rem);
+    }
+}
+#busca{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 30px;
+}
+/*-------------- Section Video ----------------------*/
+.section-video{
+    max-width: 60vw;
+    width: 70%;
+    /* height: 70%; */
+    margin: 0 auto;
+    padding: 0 20px;
+    h2{
+        color: var(--primary-color);
+    }
+}
+.video{
+    position: relative;
+    padding-bottom: 50.25%;
+    padding-top: 20px;
+    height: 0;
+    /* overflow: hidden; */
+}
+.video iframe,
+.video object,
+.video ambed{
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    width: 100%;
+    height: 100%;
+}
+
+/*-------------- Section Footer ---------------------*/
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 50px;
+    width: 100%;
+    height: 150px;
+    background-color: var(--third-color);
+}
+.menuRed{
+    display: inline-flex;
+    padding: 15px;
+    gap: 25px;
+    li a{
+        color: var(--bg-color);
+    }
+}
+.copy{
+    font-size: clamp(1rem, 6vh, 2.5rem);
+    text-shadow: 5px 5px 5px var(--primary-color);
+    background-color: var(--third-color);
+}
+
+
+/*-------------- Responsive ---------------*/
+
+@media all and (min-width: 600px) {
+    .loader {
+        height: 3em;
+        width: 3em;
+    }
+}
+
+@media all and (min-width: 800px) {
+    .loader {
+        height: 5em;
+        width: 5em;
+    }
+    .main {
+        flex: 3;
+    }
+    .main {
+        order: 2;
+    }
+    .footer {
+        order: 4;
+    }
+}
+
+@media all and (max-width:1024px){
+    /*------ Radio ------*/
+    .radio {
+        width: 35vw;
+        margin-left: 5px;
+        top: 50%;
+        text-align: center;
+    }
+    .fm {
+        width: 98%;
+    }
+    .radio .titulo {
+        width: 40vw;
+        a {
+            width: 6vw;
+            font-size: 1rem;
+        }
+        h2, h3{
+            width: 30vw;
+            font-size: 1rem;
+        }
+    }
+    /*---------- NAV PLAYER ----------*/
+    .loader{
+        margin-left: -5px;
+        margin-top: -5px;
+    }
+    .circulo{
+        width: 50%;
+        height: 50%;
+    }
+    .player{
+        width: 50vw;
+        flex-direction: column;
+        height: 130px;
+    }
+
+    .container_buttons-time{
+        width: 100%;
+        padding-top: 60px;
+    }   
+    .login{
+        margin-left: 30px;
+        margin-right: 10px;
+
+    }
+    .progress_container{
+        width: 15em;
+    }
+
+    /*------------ Section Banner ------------*/
+    .section-content{
+        flex-direction: column;
+        padding: 4em;
+    }
+    .banner img{
+        width: 15vw;
+        height: 25vh;
+    }
+
+    /*------- Section Lista de Reproduccion --------*/
+    .section-list{
+        li{
+            margin-left: 12em;
+        }
+    }
+    /*------------ Section Video ----------*/
+    .section-video{
+        height: 60vh;
+    }
+    /*--------- Ventana Login --------*/
+    .ventana{
+        width: 50%;
+        left: 26%;
+    }
+}
+
+
+
+@media all and (max-width: 857px){
+    /*----------- nav lateral---------------*/
+    .header{
+        width: 20vw;
+    }
+    .loader{
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+    .circulo{
+        width: 50%;
+        height: 50%;
+    }
+    .radio {
+        width: 55vw;
+        margin-left: 5px;
+        top: 55%;
+        height: 30vh;
+        text-align: center;
+    }
+    /*----------- main player ---------*/
+    .player{
+        width: 50vw;
+        flex-direction: column;
+        height: 130px;
+    }
+    .container_buttons-time{
+        width: 100%;
+        padding-top: 40px;
+    }
+    .login{
+        margin-left: 30px;
+        margin-right: 5px;
+    }
+    /*---------- Section Banner ----------*/
+    .titulo{
+        h2, h3{
+           width: 50vw;
+           padding-left: 1em;
+        }  
+    }
+}
+
+@media all and (max-width: 598px){
+    /*----------- nav lateral---------------*/
+
+    .loader{
+        margin-left: 0px;
+        margin-top: -10px;
+    }
+    .circulo{
+        width: 45%;
+        height: 25%;
+    }
+
+    .nav-item a{
+        font-size: clamp(0.5rem,2vh,1rem);
+    }
+    .header .nav-item ul{
+        width: 80%;
+        padding: 5px;
+    }
+    .header .nav-item ul li{
+        padding: 5px;
+        margin: 15px 5px;
+    }
+    .buscar{
+        width: 350px;
+    }
+    .buscar .busc .inp{
+        padding: 5px;
+        box-shadow: 0px 0px 10px var(--primary-color);
+    }
+    /* radio */
+    .radio {
+        width: 95vw;
+        margin-left: 5px;
+        top: 50%;
+        height: 40vh;
+        text-align: center;
+    }
+    .fm {
+        width: 98%;
+    }
+    .radio .titulo {
+        width: 40vw;
+        a {
+            width: 6vw;
+            font-size: 1rem;
+        }
+        h2, h3{
+            width: 30vw;
+            font-size: 1rem;
+        }
+    }
+
+
+    /*----------- nav player ---------*/
+    .main{
+        width: 100%;
+    }
+    .player-bar{
+        padding-top: 120px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .player{
+        width: 80vw;
+        margin: 60px 0px 0px 40px;
+        i{
+            width: 2px;
+            height: 2px;
+            padding: 4px;
+            color: var(--primary-color);
+            align-items: flex-start;
+        }
+    }
+    .player h2{
+        top: 15px;
+    }
+    .buttons button{
+        padding: 0px;
+        margin: 5px;
+        background-color: var(--bg-color);
+    }
+    #current_time, #current_audio{
+        padding: 5px 0px 5px 15px;
+        margin: 10px;
+    }
+    .container_buttons-time{
+        margin-top: 35px;
+        width: 80%;
+        padding: 20px 0px 0px;
+        justify-content: space-evenly;
+    }
+    .progress_container{
+        width: 60%;
+    }
+    .login{
+        padding-top: 4px;
+        height: 2rem;
+        margin: 40px 0px 20px 10px;
+    }
+    /*--------- ventana login registro ----------*/
+    .ventana{
+        width: 90%;
+        left: 10px;
+        padding: 5%;
+    }
+    #cerrar{
+        right: 5px;
+        top: 5px;
+        cursor: pointer;
+    }
+    .ventana h1{
+        margin-bottom: 30px;
+    }
+    input{
+        padding: 5px;
+    }
+    .input-group{
+        height: 100%;
+    }
+    .input-field{
+        font-size: clamp(0.8rem,2vh,1rem);
+    }
+    .btn-field{
+        margin-top: 0.5rem;
+    }
+    .btn-field button{
+        height: 25px;
+    }
+
+    /*------- section banner ------*/
+    .section-content{
+        align-items: end;
+    }
+    .banner img{
+        width: 100px;
+        height: 100px;
+    }
+    .titulo a{
+        width: 100%;
+    }
+    /*--------- section list --------*/
+    .section-list{
+        li{
+            margin-left: 3em;
+        }
+        .track{
+            text-align: center;
+            align-items: center;
+            padding: 0;
+            width: 85%;
+            color: #000000;
+            a{
+                margin-left: 8px;
+            }
+        }
+        .track audio{
+            left: 20px;
+            padding: 10px 30px 10px 0px;
+        }
+    }
+    /*----- section video -----*/
+    .section-video{
+        height: auto;
+        padding-top: 150px;
+    }
+}
+
+
