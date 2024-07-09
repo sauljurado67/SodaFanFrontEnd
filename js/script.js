@@ -348,6 +348,7 @@ form.addEventListener('submit', e=>{
 function regBackEnd(){
     const ur = 'http://127.0.0.1:5000';  // Ensure this URL is correct.
     const searchEmail = document.getElementById('email').value;  // Replace with the email you are looking for
+    const formulario = document.getElementById('formulario');
 
     // Validación para verificar si el campo de email está vacío
     if (searchEmail.trim() === "") {
@@ -379,14 +380,32 @@ function regBackEnd(){
                 alert(`Email ${searchEmail} ya Existe.`);
                 formulario.reset()
             } else {
-                let response = fetch(ur+'/api/sodafan/user/', {
+                const formData = new FormData(formulario);
+                const formDataObject = {};
+                formData.forEach((value, key) => formDataObject[key] = value);
+                
+                fetch(ur+'/api/sodafan/user/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: new FormData(formulario)
+                    body: JSON.stringify(formDataObject)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(postData => {
+                    console.log('Usuario registrado con éxito:', postData);
+                    alert('Usuario registrado con éxito.');
+                    formulario.reset();
+                })
+                .catch(error => {
+                    console.error('Error al registrar usuario:', error);
+                    alert('Hubo un problema al registrar el usuario.');
                 });
-                let result = response.json();
             }
         })
         .catch(error => {
